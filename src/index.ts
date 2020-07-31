@@ -6,7 +6,7 @@ import LogoSvg from '~/images/svg/icons8-typescript.svg';
 
 import { Component } from '@/components';
 
-console.log('index.ts', process.env, process.env.NODE_ENV, jQuery);
+console.log('index.ts', process.env, process.env.NODE_ENV);
 
 const appEl = document.querySelector('#app');
 
