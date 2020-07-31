@@ -1,11 +1,17 @@
-function component() {
-  const element = document.createElement('div');
+import '~/styles/global.scss';
+import '~/styles/style.scss';
 
-  element.innerHTML = 'Hello webpack';
+import Logo from '~/images/icons8-typescript-48.png';
 
-  console.log('index.ts', process.env, process.env.NODE_ENV);
+import { Component } from '@/components';
 
-  return element;
-}
+console.log('index.ts', process.env, process.env.NODE_ENV, jQuery);
 
-document.querySelector('#app').appendChild(component());
+const appEl = document.querySelector('#app');
+
+const img = document.createElement('img');
+img.src = Logo;
+appEl.appendChild(img);
+
+const component: Component = new Component();
+appEl.appendChild(component.element);

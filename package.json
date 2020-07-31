@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack-dev-server --open --mode development --env.NODE_ENV=development --progress --watch",
-    "build": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --mode production --env.NODE_ENV=production"
+    "preinstall": "echo \"[Hello, webpack-typescript-boilerplate]\"",
+    "install": "echo \"[NPM INSTALL DONE!]\"",
+    "prebuild": "echo \"[RUN PREBUILD!]\" && rm -rf dist",
+    "dev": "echo \"[RUN DEV SERVER!]\" && cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack-dev-server --open --mode development --env.NODE_ENV=development --progress --watch",
+    "build": "echo \"[RUN BUILD!]\" && cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --mode production --env.NODE_ENV=production"
   },
   "repository": {
     "type": "git",
@@ -19,19 +22,34 @@
   },
   "homepage": "https://github.com/nonoll/webpack-typescript-boilerplate#readme",
   "devDependencies": {
+    "@types/copy-webpack-plugin": "^6.0.0",
     "@types/html-webpack-plugin": "^3.2.3",
+    "@types/jquery": "^3.5.1",
+    "@types/mini-css-extract-plugin": "^0.9.1",
     "@types/node": "^14.0.27",
     "@types/webpack": "^4.41.21",
     "@types/webpack-dev-server": "^3.11.0",
     "awesome-typescript-loader": "^5.2.1",
+    "copy-webpack-plugin": "^6.0.3",
     "cross-env": "^7.0.2",
+    "css-loader": "^4.1.0",
+    "dart-sass": "^1.25.0",
+    "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.2",
+    "style-loader": "^1.2.1",
     "ts-loader": "^8.0.1",
     "ts-node": "^8.10.2",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^3.9.7",
-    "webpack": "^4.44.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "jquery": "^1.12.4"
   }
 }
