@@ -1,8 +1,9 @@
 import * as webpack from 'webpack';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import CopyWebpackPlugin from 'copy-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CheckerPlugin } from 'awesome-typescript-loader';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { isDevMode, resolvePath, nameByENV } from './common';
 import { ENV, IPackageJson } from './types';
 
@@ -31,6 +32,17 @@ export const webpackConfigPlugins = (_: ENV, args: webpack.CliConfigOptions, pac
         'polyfills',
         'bundle'
       ]
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: IS_DEV_MODE ? 'server' : 'static',
+      analyzerHost: 'localhost',
+      analyzerPort: 'auto',
+      reportFilename: 'BundleAnalyzerReport.html',
+      openAnalyzer: IS_DEV_MODE,
+      excludeAssets: ['node_modules'],
+      statsOptions: {
+        exclude: /node_modules/
+      }
     })
   ];
 }

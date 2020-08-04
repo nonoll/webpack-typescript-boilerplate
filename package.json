@@ -6,14 +6,16 @@
   "scripts": {
     "preinstall": "echo \"[Hello, @nonoll/webpack-typescript-boilerplate]\"",
     "install": "echo \"[NPM INSTALL DONE!]\"",
-    "prebuild": "echo \"[RUN PREBUILD!]\" && rm -rf dist",
+    "prebuild": "echo \"[RUN PREBUILD!]\" && npm run del:dist",
+    "del:dist": "del-cli ./dist",
+    "del:jsdoc": "del-cli ./docs",
     "dev:test": "jest --watch",
     "dev:e2e": "jest ./tests/__tests__/e2e.spec.ts",
     "dev:jsdoc": "nodemon --exec 'jsdoc -c jsdoc.json' --watch ./src/**/* -e js,ts,md",
     "dev:webpack": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack-dev-server --open --mode development --env.NODE_ENV=development --progress --watch",
     "dev": "echo \"[RUN DEV SERVER!]\" && npm run dev:webpack",
     "build:test": "jest",
-    "build:jsdoc": "rm -rf ./docs && jsdoc -c jsdoc.json",
+    "build:jsdoc": "npm run del:jsdoc && jsdoc -c jsdoc.json",
     "build:webpack": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --mode production --env.NODE_ENV=production",
     "build": "echo \"[RUN BUILD!]\" && npm run build:test && npm run build:jsdoc && npm run build:webpack"
   },
@@ -45,6 +47,7 @@
     "cross-env": "^7.0.2",
     "css-loader": "^4.1.0",
     "dart-sass": "^1.25.0",
+    "del-cli": "^3.0.1",
     "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -66,10 +69,12 @@
     "typescript": "^3.9.7",
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
+    "webpack-bundle-analyzer": "^3.8.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@types/webpack-bundle-analyzer": "^3.8.0",
     "jquery": "^1.12.4"
   }
 }
